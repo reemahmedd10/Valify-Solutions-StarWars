@@ -1,12 +1,5 @@
 import type { Metadata } from 'next';
-import { Orbitron } from 'next/font/google';
 import './globals.css';
-
-const orbitron = Orbitron({
-  subsets: ['latin'],
-  variable: '--font-orbitron',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'Star Wars Dashboard',
@@ -19,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={orbitron.variable}>
+    <html lang="en">
       <body className="antialiased">
         {children}
       </body>

@@ -15,7 +15,7 @@ const config: Config = {
         'sw-dark': '#0d0d0d',
       },
       fontFamily: {
-        starwars: ['Star Jedi', 'sans-serif'],
+        orbitron: ['system-ui', 'sans-serif'],
       },
     },
   },

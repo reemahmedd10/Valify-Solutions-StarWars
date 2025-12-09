@@ -51,7 +51,7 @@ export default function StarshipCard({ starship }: StarshipCardProps) {
               🚀
             </div>
             <div>
-              <h2 className="font-[var(--font-orbitron)] text-2xl font-bold text-white mb-2">{starship.name}</h2>
+              <h2 className="text-2xl font-bold text-white mb-2">{starship.name}</h2>
               <p className="text-gray-400">{starship.model}</p>
               <p className="text-sm text-gray-500 mt-1 capitalize">{starship.starship_class}</p>
             </div>
@@ -109,4 +109,5 @@ export default function StarshipCard({ starship }: StarshipCardProps) {
     </>
   );
 }
+
 

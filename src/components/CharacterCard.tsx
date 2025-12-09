@@ -52,7 +52,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
               {character.gender === 'male' ? '👨' : character.gender === 'female' ? '👩' : '👤'}
             </div>
             <div>
-              <h2 className="font-[var(--font-orbitron)] text-2xl font-bold text-white mb-2">{character.name}</h2>
+              <h2 className="text-2xl font-bold text-white mb-2">{character.name}</h2>
               <p className="text-gray-400">Born {character.birth_year}</p>
             </div>
           </div>
@@ -93,4 +93,5 @@ export default function CharacterCard({ character }: CharacterCardProps) {
     </>
   );
 }
+
 

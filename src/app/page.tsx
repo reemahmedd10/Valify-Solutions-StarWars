@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
       <div className="text-center mb-12">
-        <h1 className="font-[var(--font-orbitron)] text-4xl sm:text-5xl md:text-6xl font-bold text-sw-yellow text-glow mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-sw-yellow text-glow mb-4">
           STAR WARS
         </h1>
         <p className="text-xl sm:text-2xl text-gray-300 font-light tracking-wider">

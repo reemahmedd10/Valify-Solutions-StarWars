@@ -58,7 +58,7 @@ export default function PlanetCard({ planet }: PlanetCardProps) {
               🪐
             </div>
             <div>
-              <h2 className="font-[var(--font-orbitron)] text-2xl font-bold text-white mb-2">{planet.name}</h2>
+              <h2 className="text-2xl font-bold text-white mb-2">{planet.name}</h2>
               <p className="text-gray-400 capitalize">{planet.terrain}</p>
             </div>
           </div>
@@ -104,4 +104,5 @@ export default function PlanetCard({ planet }: PlanetCardProps) {
     </>
   );
 }
+
 

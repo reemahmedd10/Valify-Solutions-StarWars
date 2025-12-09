@@ -21,7 +21,7 @@ export default function StarshipsList({ starships, total }: StarshipsListProps) 
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-[var(--font-orbitron)] text-3xl font-bold text-white mb-2 flex items-center gap-3">
+          <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
             <span className="text-4xl">🚀</span>
             Starships
           </h1>
@@ -43,7 +43,7 @@ export default function StarshipsList({ starships, total }: StarshipsListProps) 
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((starship) => (
-            <StarshipCard key={starship.name} starship={starship} />
+            <StarshipCard key={starship.url} starship={starship} />
           ))}
         </div>
       ) : (

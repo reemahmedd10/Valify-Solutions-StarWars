@@ -46,7 +46,7 @@ export default function Sidebar() {
     <aside className="fixed left-0 top-0 h-full w-64 bg-sw-dark/95 backdrop-blur-md border-r border-sw-yellow/20 z-50">
       <div className="p-6 border-b border-sw-yellow/20">
         <Link href="/" className="block">
-          <h1 className="font-[var(--font-orbitron)] text-2xl font-bold text-sw-yellow text-glow">
+          <h1 className="text-2xl font-bold text-sw-yellow text-glow">
             STAR WARS
           </h1>
           <p className="text-xs text-gray-500 tracking-[0.3em] mt-1">DASHBOARD</p>

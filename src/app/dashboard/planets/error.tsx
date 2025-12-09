@@ -9,7 +9,7 @@ export default function Error({ error, reset }: ErrorProps) {
   return (
     <div className="flex flex-col items-center justify-center py-20">
       <div className="text-6xl mb-6">⚠️</div>
-      <h2 className="font-[var(--font-orbitron)] text-2xl font-bold text-white mb-2">
+      <h2 className="text-2xl font-bold text-white mb-2">
         Failed to load planets
       </h2>
       <p className="text-gray-400 mb-6 text-center max-w-md">
@@ -24,4 +24,5 @@ export default function Error({ error, reset }: ErrorProps) {
     </div>
   );
 }
+
 
