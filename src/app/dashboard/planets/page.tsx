@@ -1,8 +1,19 @@
 import { getPlanets } from '@/lib/swapi';
 import PlanetsList from '@/components/PlanetsList';
 
-export default async function PlanetsPage() {
-  const data = await getPlanets();
+interface PageProps {
+  searchParams: { page?: string };
+}
 
-  return <PlanetsList planets={data.results} total={data.count} />;
+export default async function PlanetsPage({ searchParams }: PageProps) {
+  const currentPage = Number(searchParams.page) || 1;
+  const data = await getPlanets(currentPage);
+
+  return (
+    <PlanetsList 
+      planets={data.results} 
+      total={data.count}
+      currentPage={currentPage}
+    />
+  );
 }

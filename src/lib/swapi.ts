@@ -68,12 +68,17 @@ const mockPlanets: Planet[] = [
 ];
 
 export async function getCharacters(page = 1): Promise<APIResponse<Character>> {
+  console.log('🚀 FETCHING CHARACTERS FROM API...');
   try {
     const res = await fetch(`${BASE_URL}/people/?page=${page}`, {
       cache: 'no-store',
     });
     if (!res.ok) throw new Error('Failed to fetch');
-    return await res.json();
+    const data = await res.json();
+    console.log('✅ Characters data received:', data);
+    console.log('📊 Count:', data.count);
+    console.log('📝 Results:', data.results.length, 'items');
+    return data;
   } catch (error) {
     console.warn('Using mock data for characters');
     return {
@@ -91,7 +96,9 @@ export async function getStarships(page = 1): Promise<APIResponse<Starship>> {
       cache: 'no-store',
     });
     if (!res.ok) throw new Error('Failed to fetch');
-    return await res.json();
+    const data = await res.json();
+    console.log('✅ Starships data received:', data);
+    return data;
   } catch (error) {
     console.warn('Using mock data for starships');
     return {
@@ -109,7 +116,9 @@ export async function getPlanets(page = 1): Promise<APIResponse<Planet>> {
       cache: 'no-store',
     });
     if (!res.ok) throw new Error('Failed to fetch');
-    return await res.json();
+    const data = await res.json();
+    console.log('✅ Planets data received:', data);
+    return data;
   } catch (error) {
     console.warn('Using mock data for planets');
     return {

@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { Planet } from '@/lib/swapi';
 import PlanetCard from './PlanetCard';
 import SearchBar from './SearchBar';
+import Pagination from './Pagination';
 
 interface PlanetsListProps {
   planets: Planet[];
   total: number;
+  currentPage: number;
 }
 
-export default function PlanetsList({ planets, total }: PlanetsListProps) {
+export default function PlanetsList({ planets, total, currentPage }: PlanetsListProps) {
   const [search, setSearch] = useState('');
 
   const filtered = planets.filter((planet) =>
@@ -57,6 +59,15 @@ export default function PlanetsList({ planets, total }: PlanetsListProps) {
             Clear search
           </button>
         </div>
+      )}
+
+      {!search && (
+        <Pagination 
+          currentPage={currentPage}
+          totalCount={total}
+          itemsPerPage={10}
+          basePath="/dashboard/planets"
+        />
       )}
     </div>
   );

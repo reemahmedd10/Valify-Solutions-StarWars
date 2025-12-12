@@ -111,3 +111,6 @@ export default function StarshipCard({ starship }: StarshipCardProps) {
 }
 
 
+
+
+

@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { Starship } from '@/lib/swapi';
 import StarshipCard from './StarshipCard';
 import SearchBar from './SearchBar';
+import Pagination from './Pagination';
 
 interface StarshipsListProps {
   starships: Starship[];
   total: number;
+  currentPage: number;
 }
 
-export default function StarshipsList({ starships, total }: StarshipsListProps) {
+export default function StarshipsList({ starships, total, currentPage }: StarshipsListProps) {
   const [search, setSearch] = useState('');
 
   const filtered = starships.filter((starship) =>
@@ -57,6 +59,15 @@ export default function StarshipsList({ starships, total }: StarshipsListProps) 
             Clear search
           </button>
         </div>
+      )}
+
+      {!search && (
+        <Pagination 
+          currentPage={currentPage}
+          totalCount={total}
+          itemsPerPage={10}
+          basePath="/dashboard/starships"
+        />
       )}
     </div>
   );

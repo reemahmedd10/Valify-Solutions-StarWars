@@ -106,3 +106,6 @@ export default function PlanetCard({ planet }: PlanetCardProps) {
 }
 
 
+
+
+

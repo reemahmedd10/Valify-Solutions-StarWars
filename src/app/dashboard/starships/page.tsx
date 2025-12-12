@@ -1,8 +1,19 @@
 import { getStarships } from '@/lib/swapi';
 import StarshipsList from '@/components/StarshipsList';
 
-export default async function StarshipsPage() {
-  const data = await getStarships();
+interface PageProps {
+  searchParams: { page?: string };
+}
 
-  return <StarshipsList starships={data.results} total={data.count} />;
+export default async function StarshipsPage({ searchParams }: PageProps) {
+  const currentPage = Number(searchParams.page) || 1;
+  const data = await getStarships(currentPage);
+
+  return (
+    <StarshipsList 
+      starships={data.results} 
+      total={data.count}
+      currentPage={currentPage}
+    />
+  );
 }

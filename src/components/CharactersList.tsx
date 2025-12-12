@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { Character } from '@/lib/swapi';
 import CharacterCard from './CharacterCard';
 import SearchBar from './SearchBar';
+import Pagination from './Pagination';
 
 interface CharactersListProps {
   characters: Character[];
   total: number;
+  currentPage: number;
 }
 
-export default function CharactersList({ characters, total }: CharactersListProps) {
+export default function CharactersList({ characters, total, currentPage }: CharactersListProps) {
   const [search, setSearch] = useState('');
 
   const filtered = characters.filter((character) =>
@@ -57,6 +59,15 @@ export default function CharactersList({ characters, total }: CharactersListProp
             Clear search
           </button>
         </div>
+      )}
+
+      {!search && (
+        <Pagination 
+          currentPage={currentPage}
+          totalCount={total}
+          itemsPerPage={10}
+          basePath="/dashboard/characters"
+        />
       )}
     </div>
   );
