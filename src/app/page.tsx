@@ -15,7 +15,7 @@ export default function Home() {
       <div className="max-w-2xl text-center mb-12">
         <p className="text-gray-400 text-lg leading-relaxed">
           Explore the vast Star Wars universe. Discover information about your favorite 
-          characters, iconic starships, and mysterious planets from a galaxy far, far away.
+          characters, epic films, iconic starships, and mysterious planets from a galaxy far, far away.
         </p>
       </div>
 

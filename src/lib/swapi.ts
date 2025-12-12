@@ -43,6 +43,16 @@ export interface Planet {
   url: string;
 }
 
+export interface Film {
+  title: string;
+  episode_id: number;
+  opening_crawl: string;
+  director: string;
+  producer: string;
+  release_date: string;
+  url: string;
+}
+
 export interface APIResponse<T> {
   count: number;
   next: string | null;
@@ -65,6 +75,11 @@ const mockStarships: Starship[] = [
 const mockPlanets: Planet[] = [
   { name: "Tatooine", rotation_period: "23", orbital_period: "304", diameter: "10465", climate: "arid", gravity: "1 standard", terrain: "desert", surface_water: "1", population: "200000", url: "https://swapi.dev/api/planets/1/" },
   { name: "Alderaan", rotation_period: "24", orbital_period: "364", diameter: "12500", climate: "temperate", gravity: "1 standard", terrain: "grasslands, mountains", surface_water: "40", population: "2000000000", url: "https://swapi.dev/api/planets/2/" },
+];
+
+const mockFilms: Film[] = [
+  { title: "A New Hope", episode_id: 4, opening_crawl: "It is a period of civil war...", director: "George Lucas", producer: "Gary Kurtz, Rick McCallum", release_date: "1977-05-25", url: "https://swapi.dev/api/films/1/" },
+  { title: "The Empire Strikes Back", episode_id: 5, opening_crawl: "It is a dark time for the Rebellion...", director: "Irvin Kershner", producer: "Gary Kurtz, Rick McCallum", release_date: "1980-05-17", url: "https://swapi.dev/api/films/2/" },
 ];
 
 export async function getCharacters(page = 1): Promise<APIResponse<Character>> {
@@ -126,6 +141,29 @@ export async function getPlanets(page = 1): Promise<APIResponse<Planet>> {
       next: null,
       previous: null,
       results: mockPlanets,
+    };
+  }
+}
+
+export async function getFilms(page = 1): Promise<APIResponse<Film>> {
+  console.log('🚀 FETCHING FILMS FROM API...');
+  try {
+    const res = await fetch(`${BASE_URL}/films/?page=${page}`, {
+      cache: 'no-store',
+    });
+    if (!res.ok) throw new Error('Failed to fetch');
+    const data = await res.json();
+    console.log('✅ Films data received:', data);
+    console.log('📊 Count:', data.count);
+    console.log('📝 Results:', data.results.length, 'items');
+    return data;
+  } catch (error) {
+    console.warn('Using mock data for films');
+    return {
+      count: mockFilms.length,
+      next: null,
+      previous: null,
+      results: mockFilms,
     };
   }
 }

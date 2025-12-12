@@ -1,15 +1,17 @@
 import Link from 'next/link';
-import { getCharacters, getStarships, getPlanets } from '@/lib/swapi';
+import { getCharacters, getStarships, getPlanets, getFilms } from '@/lib/swapi';
 
 export default async function DashboardPage() {
-  const [charactersData, starshipsData, planetsData] = await Promise.all([
+  const [charactersData, starshipsData, planetsData, filmsData] = await Promise.all([
     getCharacters(),
     getStarships(),
     getPlanets(),
+    getFilms(),
   ]);
 
   const stats = [
     { label: 'Characters', value: charactersData.count, icon: '👤', href: '/dashboard/characters', color: 'from-blue-500/20 to-blue-600/10' },
+    { label: 'Films', value: filmsData.count, icon: '🎬', href: '/dashboard/films', color: 'from-yellow-500/20 to-orange-600/10' },
     { label: 'Starships', value: starshipsData.count, icon: '🚀', href: '/dashboard/starships', color: 'from-purple-500/20 to-purple-600/10' },
     { label: 'Planets', value: planetsData.count, icon: '🪐', href: '/dashboard/planets', color: 'from-green-500/20 to-green-600/10' },
   ];
@@ -25,7 +27,7 @@ export default async function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
           <Link
             key={stat.label}
@@ -68,6 +70,15 @@ export default async function DashboardPage() {
                 <p className="text-gray-500 text-xs">Heroes, villains & more</p>
               </div>
             </Link>
+            <Link href="/dashboard/films" className="flex items-center gap-3 p-3 rounded-lg bg-sw-dark/50 hover:bg-sw-yellow/5 transition-colors border border-transparent hover:border-sw-yellow/20">
+              <div className="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
+                <span>🎬</span>
+              </div>
+              <div>
+                <p className="text-white text-sm font-medium">View Films</p>
+                <p className="text-gray-500 text-xs">The epic saga</p>
+              </div>
+            </Link>
             <Link href="/dashboard/starships" className="flex items-center gap-3 p-3 rounded-lg bg-sw-dark/50 hover:bg-sw-yellow/5 transition-colors border border-transparent hover:border-sw-yellow/20">
               <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
                 <span>🚀</span>
@@ -98,7 +109,7 @@ export default async function DashboardPage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
             The Star Wars API (SWAPI) is a free, open-source API providing all the Star Wars data you&apos;ve ever wanted. 
-            This dashboard allows you to explore information about characters, starships, and planets from the Star Wars universe.
+            This dashboard allows you to explore information about characters, films, starships, and planets from the Star Wars universe.
           </p>
           <div className="flex items-center gap-2 text-xs text-gray-500">
             <span className="w-2 h-2 bg-green-500 rounded-full" />
